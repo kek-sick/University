@@ -1,15 +1,10 @@
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.views import View
 from django.shortcuts import render
 from django import forms
 from my_app.models import Course, Participation
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-
-
-class ExampleClassBased(View):
-    def get(self, request):
-        return HttpResponse('response fom class based view')
 
 
 class Courses(View):
@@ -31,9 +26,23 @@ class Courses(View):
 
         if request.POST['data'] == 'getcourses':
             my_courses = Participation.objects.filter(user_id=request.user.id)
-            selected_courses = {a.course_id: a.course_id for a in my_courses}
-            print(selected_courses)
-            return HttpResponse(selected_courses)
+            selected_courses1 = {a.course_id: a.course_id for a in my_courses}
+            return JsonResponse(selected_courses1)
+
+
+class SetParticipation(View):
+    def post(self, request):
+        if request.POST['data'] == 'setcourse':
+            req = request.POST
+            course_id = req['course']
+            user = request.user.id
+            if req['action'] == '1':
+                participation = Participation(user_id=user, course_id=course_id)
+                participation.save()
+            else:
+                participation = Participation.objects.filter(user_id=user, course_id=course_id)
+                participation.delete()
+        return HttpResponse('1')
 
 
 class Registration(View):

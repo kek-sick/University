@@ -24,11 +24,6 @@
             margin-left: 10px;
         }
     </style>
-    <script>
-        $(function () {
-
-        })
-    </script>
 </head>
 <body>
 <div class="user">
@@ -43,7 +38,7 @@
     <h1>Курсы</h1>
     <div class="list-group">
         {% for element in list %}
-            <a id="{{ element.id }}" class="list-group-item list-group-item-action">
+            <a id="{{ element.id }}" class="course list-group-item list-group-item-action">
                 <div class="d-flex w-100 justify-content-between">
                     <h5 class="mb-1">{{element.title}}</h5>
                     <small>{{ element.date }}</small>
