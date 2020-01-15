@@ -45,26 +45,6 @@ class SetParticipation(View):
         return HttpResponse('1')
 
 
-class Registration(View):
-    model = User
-    def get(self, request):
-        form = RegistrationForm()
-        print(form)
-        return render(request, 'registration_form.html', {'form': form})
-
-    def registration(self, request):
-        if request.method == 'POST':
-            form = RegistrationForm(request.POST)
-            if form.is_valid():
-               # успех... создание модели пользователя
-
-                return HttpResponseRedirect('/login/')
-        else:
-            form = RegistrationForm()
-
-        return render(request, 'registration_form.html', {'form': form})
-
-
 class RegistrationS(View):
     def get(self, request):
         form = RegistrationForm()
@@ -103,6 +83,7 @@ class RegistrationForm(forms.Form):
 
 class Login(View):
     def get(self, request):
+
         form = LoginForm()
         return render(request, 'login_form.html', {'form': form})
 
