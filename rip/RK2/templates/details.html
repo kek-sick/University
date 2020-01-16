@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Details</title>
+</head>
+<body>
+<table border="1">
+    <tr><td>название</td>><td>серийный номер</td>><td>производитель</td></tr>
+    {% for detail in data %}
+        <tr><td>{{ detail.name }}</td>><td>{{ detail.serial_number }}</td>><td>{{ detail.manufacturer_id.name }}</td></tr>
+    {% endfor %}
+</table>
+</body>
+</html>
