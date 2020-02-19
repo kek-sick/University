@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="/static/my_app/script/jquery.cookie.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <title>Курсы</title>
+    <script src="/static/my_app/script/courses.js"></script>
+    <style>
+        .coursesList{
+            margin-top: 40px;
+            padding-left: 250px;
+            padding-right: 250px;
+        }
+        .user{
+            margin-right: 50px;
+            top: 20px;
+            right: 20px;
+            position: fixed;
+        }
+        .logout{
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="user">
+    <form method="post" name="logout">
+        {% csrf_token %}
+        <b>{{ user }}</b>
+        <input type="hidden" name="data" value="logout">
+        <button type="submit" class="btn btn-outline-primary logout">Выйти</button>
+    </form>
+</div>
+<div class="coursesList">
+    <h1>Курсы</h1>
+    <div class="list-group">
+        {% for element in list %}
+            <a id="{{ element.id }}" class="course list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">{{element.title}}</h5>
+                    <small>{{ element.date }}</small>
+                </div>
+                <small>{{ element.description }}</small>
+            </a>
+        {% endfor %}
+    </div>
+</div>
+</body>
+</html>

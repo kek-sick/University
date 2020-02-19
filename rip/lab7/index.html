@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.js"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .main{
+            padding-left: 50px;
+            top: 50px;
+        }
+        input{
+            margin-top: 10px;
+            padding: 3px;
+        }
+        .graf{
+            margin-top: 20px;
+            height: 250px;
+            width: 250px;
+        }
+        button{
+            margin-top: 10px;
+        }
+    </style>
+    <script src="index.js"></script>
+</head>
+<body>
+<div class="main">
+    <div class="input_block">
+        <label for="id_arg_from">От</label>
+        <input id="id_arg_from" type="number" class="arg_from"><br>
+        <label for="id_arg_to">До</label>
+        <input id="id_arg_to" type="number" class="arg_to"><br>
+        <label for="id_func">Функция</label>
+        <input id="id_func" class="func"><br>
+        <button class="built_btn">Построить график</button>
+    </div>
+    <div class="graf">
+
+    </div>
+</div>
+</body>
+</html>

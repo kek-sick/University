@@ -7,13 +7,30 @@
     <title>Курсы</title>
     <style>
         .coursesList{
-            padding-top: 40px;
+            margin-top: 40px;
             padding-left: 250px;
             padding-right: 250px;
+        }
+        .user{
+            margin-right: 50px;
+            top: 20px;
+            right: 20px;
+            position: fixed;
+        }
+        .logout{
+            margin-left: 10px;
         }
     </style>
 </head>
 <body>
+<div class="user">
+    <form method="post" name="logout">
+        {% csrf_token %}
+        <b>{{ user }}</b>
+        <input type="hidden" name="logout" value="true">
+        <button type="submit" class="btn btn-outline-primary logout">Выйти</button>
+    </form>
+</div>
 <div class="coursesList">
     <h1>Курсы</h1>
     <ul class="list-group">
